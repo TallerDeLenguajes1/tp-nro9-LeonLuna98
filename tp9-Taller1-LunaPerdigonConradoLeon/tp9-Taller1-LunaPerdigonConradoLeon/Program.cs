@@ -11,8 +11,8 @@ namespace tp9_Taller1_LunaPerdigonConradoLeon
     {
         static void Main(string[] args)
         {
-            string rutadelacarpeta = @"\RutaCarpeta";
-            /*
+            string rutadelacarpeta = @"C:\CarpetaMorseFuncionando";
+          
              SoportesParaConfiguracion.CrearArchivoDeConfiguracion(rutadelacarpeta);
              string cad=SoportesParaConfiguracion.LeerConfiguracion();
              Console.WriteLine(cad);
@@ -27,54 +27,41 @@ namespace tp9_Taller1_LunaPerdigonConradoLeon
 
                  }
              }
-          */
-          /*
+        
+          
             Console.WriteLine("Ingrese una cadena de texto");
             string textoamorse = Console.ReadLine();
             Console.WriteLine("Ingrese una cadena en morse");
             string morseatexto = Console.ReadLine();
-            */
-            string hola = @"hola.";
-            string example = @"... --- ... .-..";
-            
-            //string convertidoatexto= SoportesParaConfiguracion.MorseATexto(morseatexto);
-            //string convertidoamorse= SoportesParaConfiguracion.MorseATexto(textoamorse);
+
+            //string hola = @"hola.";
+            //string example = @"... --- ... .-..";
+            Console.WriteLine("El texto en morse es: ");
+             string convertidoamorse= SoportesParaConfiguracion.TextoAMorse(textoamorse);
+            Console.WriteLine("El texto morse en castellano es: ");
+            string convertidoatexto= SoportesParaConfiguracion.MorseATexto(morseatexto);
+
+
+
+            ConversorAMorse.CreandoMorse(textoamorse);
+            ConversorAMorse.CreandoTexto(morseatexto);
+
+            ConversorAMorse.elsonidito();
             //System.IO.File.WriteAllText(@"\rutadelacarpeta\ElTextoEnMorse.txt", convertidoamorse);
             //System.IO.File.WriteAllText(@"\rutadelacarpeta\LaMorseEnTexto.txt", convertidoatexto);
-            SoportesParaConfiguracion.TextoAMorse(hola);
+            //SoportesParaConfiguracion.TextoAMorse(hola);
 
 
-            SoportesParaConfiguracion.MorseATexto(example);
+            //SoportesParaConfiguracion.MorseATexto(example);
             Console.ReadKey();
         }
-       /* public static void MorseATexto(string cadena)
-        {
-            List<char> cadenamorse = new List<char>();
-
-            foreach (char letra in cadena)
-            {
-                switch (cadena)
-                {
-                    case "a":
-                        cadenamorse.Add('.');
-                        cadenamorse.Add('-');
-                        cadenamorse.Add(' ');
-
-                        ; break;
-
-
-                }
-            }
-             StringBuilder sb = new StringBuilder(cadenamorse.ToString());
-            //Console.Write(cadenamorse.ToArray().ToString());
-            Console.WriteLine(sb);
-           
+       
 
 
 
 
 
-        } */
+       
 
     }
 }

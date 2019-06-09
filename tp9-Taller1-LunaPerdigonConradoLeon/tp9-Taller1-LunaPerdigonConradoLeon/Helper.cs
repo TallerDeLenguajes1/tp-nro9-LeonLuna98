@@ -8,9 +8,11 @@ namespace Helpers
 {
     public static class  SoportesParaConfiguracion
     {
-
+ 
         static string nuevaRutaCarpeta = @"\RutaCarpeta";
         static string archivoConfig = "config.dat";
+       
+
         public static void CrearArchivoDeConfiguracion(string rutadelarchivo)
         {
 
@@ -32,7 +34,10 @@ namespace Helpers
             if (File.Exists(archivoConfig)) {
                 
                 BinaryReader ruta= new BinaryReader(File.Open(archivoConfig, FileMode.Open));
-                return ruta.ReadString();
+                string larutita = ruta.ReadString();
+                ruta.Close();
+                return larutita;
+                
             }
             else
             {
@@ -45,42 +50,51 @@ namespace Helpers
             }
 
         }
-        public static void TextoAMorse(string cadena)
+        public static string TextoAMorse(string cadena)
         {
-            char[] letras = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'n', 'm', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
-            string[] caracteres = { ".- ", "-... ", "-.-. ", "-.. ", ". ", "..-. ", "--. ", ".... ", ".. ", ".--- ", "-.- ", ".-.. ", "-- ", "-. ", "--- ", ".--. ", "--.- ", ".-. ", "... ", "- ", "..- ", "...- ", "-..- ", "-..- ", "-.-- ", "--.. " };
+
+            string textomorse= "";
+            char[] letras = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'n', 'm', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ' ' };
+            string[] caracteres = { ".- ", "-... ", "-.-. ", "-.. ", ". ", "..-. ", "--. ", ".... ", ".. ", ".--- ", "-.- ", ".-.. ", "-- ", "-. ", "--- ", ".--. ", "--.- ", ".-. ", "... ", "- ", "..- ", "...- ", "-..- ", "-..- ", "-.-- ", "--.. ", @" / " };
             int j = 0;
             while (cadena[j] != '.')
             {
-                for (int i = 0; i < 26; i++)
+                for (int i = 0; i < 27; i++)
                 {
                     if (letras[i] == cadena[j])
                     {
                         Console.Write(caracteres[i]);
+                        textomorse = textomorse + caracteres[i];
 
                     }
                 }
                 j++;
             }
+            return textomorse;
         }
-        public static void MorseATexto(string cadena)
+        public static string MorseATexto(string cadena)
         {
-            char[] letras = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'n', 'm', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
-            string[] caracteres = { ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", "-..-", "-..-", "-.--", "--.." };           
+            string morsetexto = "";
+            char[] letras = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'n', 'm', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ' ' };
+            string[] caracteres = { ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", "-..-", "-..-", "-.--", "--..", @"/" };           
             string[] cadamorse = cadena.Split(' ');
             foreach(string linea in cadamorse)
             {
-                for(int i=0; i < 26; i++)
+                for(int i=0; i < 27; i++)
                 {
                     if (Equals(linea, caracteres[i]))
                     {
                         Console.Write(letras[i]);
+                        morsetexto = morsetexto + letras[i];
                      
                     }
                 }
             }
+            return morsetexto;
         }
 
+
+      
 
            /* List<string> cadenamorse = new List<string>();
            
