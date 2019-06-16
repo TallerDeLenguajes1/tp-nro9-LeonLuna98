@@ -17,37 +17,26 @@ namespace Helpers
         {
             string larutaamorse = SoportesParaConfiguracion.LeerConfiguracion() + @"\Morse";
             Console.WriteLine(larutaamorse);
-            if (!Directory.Exists(larutaamorse))
-            {
+            if (!Directory.Exists(larutaamorse)) {
                 Directory.CreateDirectory(larutaamorse);
-
-
-
             }
-                  File.WriteAllText(larutaamorse + @"\TextoAMorse.txt", SoportesParaConfiguracion.TextoAMorse(cadena));
+            File.WriteAllText(larutaamorse + @"\TextoAMorse.txt", SoportesParaConfiguracion.TextoAMorse(cadena));
 
         }
-
 
         public static void CreandoTexto(string cadena)
         {
             string larutademorseatexto = SoportesParaConfiguracion.LeerConfiguracion() + @"\TextoAMorse";
-            if (!Directory.Exists(larutademorseatexto))
-            {
+            if (!Directory.Exists(larutademorseatexto)) {
                 Directory.CreateDirectory(larutademorseatexto);
 
-                
-
-            }
-            
-          
-                File.WriteAllText(larutademorseatexto + @"\MorseATexto.txt", SoportesParaConfiguracion.MorseATexto(cadena));
+            }              
+            File.WriteAllText(larutademorseatexto + @"\MorseATexto.txt", SoportesParaConfiguracion.MorseATexto(cadena));
 
         }
 
 
         public static void elsonidito(){
-
             //Direcciones de los archivos de sonido
             string sonidopunto = SoportesParaConfiguracion.LeerConfiguracion() + @"\punto.mp3";
             string sonidoraya = SoportesParaConfiguracion.LeerConfiguracion() + @"\raya.mp3";
@@ -55,7 +44,6 @@ namespace Helpers
             //Valos en bytes para UN punto y UNA RAYA
             byte[] valoresdelarchivo_punto;
             byte[] valoresdelarchivo_raya;
-
 
             //Guardo los valores en bytes de los sonidos
             FileStream origen_punto = new FileStream(sonidopunto, FileMode.Open);//Guarda los sonidos un solo punto
@@ -66,9 +54,7 @@ namespace Helpers
             valoresdelarchivo_raya = LectorCompletoDeBinario(origen_raya);
             origen_raya.Close();
 
-
             List<byte> lista = new List<byte>();//Para almacenarlos en una lista (ahora vacia)
-
             
             string laruta = SoportesParaConfiguracion.LeerConfiguracion() + @"\Morse\TextoAMorse.txt";
           
@@ -82,13 +68,10 @@ namespace Helpers
                     //Agrega los bytes del sonido de punto
                     lista.AddRange(valoresdelarchivo_punto); 
                 }
-                else if (car == '-')
-                {
+                else if (car == '-') {
                     //Agrega los bytes del sonido de raya
                     lista.AddRange(valoresdelarchivo_raya); 
                 }
-
-
             }
             //Crea y abro un nuevo archivo de audio mp3
             FileStream Destino = new FileStream(SoportesParaConfiguracion.LeerConfiguracion() + @"\audio.mp3", FileMode.Create);

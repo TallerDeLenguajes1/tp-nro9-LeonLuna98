@@ -27,7 +27,6 @@ namespace tp9_Taller1_LunaPerdigonConradoLeon
 
                  }
              }
-        
           
             Console.WriteLine("Ingrese una cadena de texto");
             string textoamorse = Console.ReadLine();
@@ -41,18 +40,11 @@ namespace tp9_Taller1_LunaPerdigonConradoLeon
             Console.WriteLine("El texto morse en castellano es: ");
             string convertidoatexto= SoportesParaConfiguracion.MorseATexto(morseatexto);
 
-
-
             ConversorAMorse.CreandoMorse(textoamorse);
             ConversorAMorse.CreandoTexto(morseatexto);
 
             ConversorAMorse.elsonidito();
-            //System.IO.File.WriteAllText(@"\rutadelacarpeta\ElTextoEnMorse.txt", convertidoamorse);
-            //System.IO.File.WriteAllText(@"\rutadelacarpeta\LaMorseEnTexto.txt", convertidoatexto);
-            //SoportesParaConfiguracion.TextoAMorse(hola);
 
-
-            //SoportesParaConfiguracion.MorseATexto(example);
             Console.ReadKey();
         }
        

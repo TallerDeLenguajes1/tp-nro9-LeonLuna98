@@ -12,47 +12,37 @@ namespace Helpers
         static string nuevaRutaCarpeta = @"\RutaCarpeta";
         static string archivoConfig = "config.dat";
        
-
         public static void CrearArchivoDeConfiguracion(string rutadelarchivo)
         {
-
             if (!Directory.Exists(rutadelarchivo)){
                 Directory.CreateDirectory(rutadelarchivo);
             }
             else {
-                //File.Copy(@"\tp9-Taller1-LunaPerdigonConradoLeon\tp9-Taller1-LunaPerdigonConradoLeon\bin\Debug", rutadelarchivo); 
+             //File.Copy(@"\tp9-Taller1-LunaPerdigonConradoLeon\tp9-Taller1-LunaPerdigonConradoLeon\bin\Debug", rutadelarchivo); 
             }
             FileStream elarchivo = File.Create(archivoConfig);//Abro el archivo y lo mando al string
             BinaryWriter binarioescritura = new BinaryWriter(elarchivo);
-
             binarioescritura.Write(rutadelarchivo);
             binarioescritura.Close();
 
         }
         public static string LeerConfiguracion()
         {
-            if (File.Exists(archivoConfig)) {
-                
+            if (File.Exists(archivoConfig)) {             
                 BinaryReader ruta= new BinaryReader(File.Open(archivoConfig, FileMode.Open));
                 string larutita = ruta.ReadString();
                 ruta.Close();
-                return larutita;
-                
+                return larutita;              
             }
-            else
-            {
-                Console.WriteLine("El archivo no existe, ingrese un nuevo nombre para crearlo");
-           
+            else{
+                Console.WriteLine("El archivo no existe, ingrese un nuevo nombre para crearlo");         
                 SoportesParaConfiguracion.CrearArchivoDeConfiguracion(nuevaRutaCarpeta);
                 BinaryReader ruta = new BinaryReader(File.Open(archivoConfig, FileMode.Open));
                 return ruta.ReadString();
-
             }
-
         }
         public static string TextoAMorse(string cadena)
         {
-
             string textomorse= "";
             char[] letras = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'n', 'm', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ' ' };
             string[] caracteres = { ".- ", "-... ", "-.-. ", "-.. ", ". ", "..-. ", "--. ", ".... ", ".. ", ".--- ", "-.- ", ".-.. ", "-- ", "-. ", "--- ", ".--. ", "--.- ", ".-. ", "... ", "- ", "..- ", "...- ", "-..- ", "-..- ", "-.-- ", "--.. ", @" / " };
@@ -92,12 +82,7 @@ namespace Helpers
             }
             return morsetexto;
         }
-
-
-      
-
-           /* List<string> cadenamorse = new List<string>();
-           
+           /* List<string> cadenamorse = new List<string>();         
             foreach (char letra in cadena)
             {
                 switch (cadena)
@@ -130,15 +115,8 @@ namespace Helpers
                     case "z": cadenamorse.Add(@"--.. "); break;
                     default: cadenamorse.Add(@"     "); break;
                 }
-          
-
             }
-
         }*/
-
-
-
-
 
     }
 }
